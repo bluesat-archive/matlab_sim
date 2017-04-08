@@ -5,7 +5,7 @@
 %%%% Date: 08/04/17
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [counter, time, accel, velInc, orienQuat, angleVel, absPos, vel] = imuParser(fileName)
+function [counter, time, accel, velInc, orienQuat, angleVel, absPos, vel] = imuParser(fileName, saveFile)
 % takes in the file name of IMU logger data and converts into matrix
 % format/sensible data
 % fileName: name & path of file
@@ -70,6 +70,8 @@ function [counter, time, accel, velInc, orienQuat, angleVel, absPos, vel] = imuP
         vel(i,:) = str2double(tmp(j:j+2));
         i = i+1;
     end
+    
+    save(saveFile, 'counter', 'time', 'accel', 'velInc', 'orienQuat', 'angleVel', 'absPos', 'vel');
 end
     
 
